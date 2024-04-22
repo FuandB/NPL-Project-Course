@@ -33,9 +33,9 @@ def transcribe(audio_file):
 # load_dotenv()
 
 def init_app():
-    os.environ["CLARIFAI_PAT"] = st.secrets["CLARIFAI_PAT"]
-    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-    os.environ["SERP_API_KEY"] = st.secrets["SERP_API_KEY"]
+    os.environ["CLARIFAI_PAT"] = st.secrets["CLARIFAI"]["CLARIFAI_PAT"]
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI"]["OPENAI_API_KEY"]
+    os.environ["SERP_API_KEY"] = st.secrets["SERP"]["SERP_API_KEY"]
 
 # Function to extract prompt and image URL from combined input
 def extract_prompt_and_url(combined_prompt):
@@ -145,8 +145,8 @@ def main():
             docs = pdf_to_text(documents)
 
             Clarifaivectorstore.from_documents(
-                user_id=st.secrets["USER_ID"],
-                app_id=st.secrets["APP_ID"],
+                user_id=st.secrets["USER"]["USER_ID"],
+                app_id=st.secrets["APP"]["APP_ID"],
                 documents=docs,
                 number_of_docs=len(docs),
                 pat=os.getenv("CLARIFAI_PAT")

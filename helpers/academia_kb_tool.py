@@ -28,8 +28,8 @@ class AcademiaKBTool(BaseTool):
 
         # Initialize Clarifai vector store
         clarifai_vector_db = Clarifai(
-            user_id=st.secrets["USER_ID"],
-            app_id=st.secrets["APP_ID"],
+            user_id=st.secrets["USER"]["USER_ID"],
+            app_id=st.secrets["APP"]["APP_ID"],
             pat=os.getenv("CLARIFAI_PAT")
         )
 
